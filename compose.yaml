@@ -1,0 +1,36 @@
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: contact-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - frontend-network
+
+  backend:
+    build: ./backend
+    container_name: contact-backend
+    depends_on:
+      - mongodb
+    networks:
+      - frontend-network
+      - database-network
+
+  mongodb:
+    image: mongo:8.2
+    container_name: contact-mongodb
+    restart: unless-stopped
+    volumes:
+      - /mnt/mongodb-data:/data/db
+    networks:
+      - database-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  frontend-network:
+  database-network:
