@@ -1,4 +1,4 @@
-# 🚀 Docker Contact Application
+#  Docker Contact Application
 
 A production-style **multi-container Contact Application** deployed on **AWS EC2** using Docker.
 
